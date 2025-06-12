@@ -1,0 +1,16 @@
+@startuml
+class service.CardService {
+- CardDao cardDao
+- CardDaoFactory cardDaoFactory
++ void switchStorage(StorageType)
++ void addCard(Card)
++ List<Card> getAllCards()
++ void updateCard(Card)
++ void deleteCard(Long)
++ List<Card> getExpiringCards(LocalDate)
++ List<CardHistory> getCardHistory(Long)
++ Optional<Card> findBestCardForCategory(String)
+}
+
+
+@enduml

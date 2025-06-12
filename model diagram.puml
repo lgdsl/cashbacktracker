@@ -1,0 +1,32 @@
+@startuml
+class model.Card {
+- Long id
+- String bankName
+- String cardName
+- String category
+- double cashback
+- LocalDate categoryChangeDate
+- CardStatus status
++ boolean isActive()
++ void setActive(boolean)
+}
+
+
+enum model.CardStatus {
++  ACTIVE
++  EXPIRED
+- String displayName
++ String getDisplayName()
+}
+
+
+class model.CardHistory {
+- Long id
+- Long cardId
+- String category
+- Double cashbackPercentage
+- LocalDate changeDate
+- LocalDateTime recordDate
+}
+
+@enduml

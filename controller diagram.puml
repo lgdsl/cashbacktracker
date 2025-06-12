@@ -1,0 +1,88 @@
+@startuml
+class controller.CardHistoryController {
+- {static} DateTimeFormatter DATE_TIME_FORMATTER
+- TableView<CardHistory> historyTable
+- TableColumn<CardHistory,String> categoryColumn
+- TableColumn<CardHistory,Double> cashbackColumn
+- TableColumn<CardHistory,LocalDate> dateColumn
+- TableColumn<CardHistory,String> changeDateColumn
+- String title
++ void initialize()
++ void setHistory(List<CardHistory>)
++ void setTitle(String)
+- void updateTitleLabel()
+- void handleClose()
+}
+
+
+class controller.AddCardDialogController {
+- TextField bankNameField
+- TextField cardNameField
+- TextField categoryField
+- TextField cashbackField
+- DatePicker changeDatePicker
+- CheckBox activeCheckBox
+- DialogPane dialogPane
+- Label bankNameError
+- Label cardNameError
+- Label categoryError
+- Label cashbackError
+- Label dateError
+- Card card
+- boolean isEditMode
++ void initialize()
++ void setDialogPane(DialogPane)
++ void setCard(Card)
++ Card getCard()
+- boolean validateInput()
+}
+
+
+class controller.MainController {
+- {static} String ALL_BANKS
+- {static} String ALL_CATEGORIES
+- {static} String ALL_STATUSES
+~ TableView<Card> cardsTable
+- TableColumn<Card,String> bankNameColumn
+- TableColumn<Card,String> cardNameColumn
+- TableColumn<Card,String> categoryColumn
+- TableColumn<Card,Double> cashbackColumn
+- TableColumn<Card,LocalDate> changeDateColumn
+- TableColumn<Card,Card.CardStatus> statusColumn
+~ ComboBox<String> bankFilter
+~ ComboBox<String> categoryFilter
+~ ComboBox<Card.CardStatus> statusFilter
+~ ComboBox<String> storageTypeCombo
+~ ComboBox<String> searchCategoryCombo
+- CardService cardService
+- ObservableList<Card> cardList
++ void setCardService(CardService)
++ void initialize()
+- void setupTableColumns()
+- void setupFilters()
+- void setupStorageTypeCombo()
+# void loadCards()
+- void updateFilterOptions()
+# void applyFilters()
+~ void handleAddCard()
+~ void handleEditCard()
+~ void handleDeleteCard()
+~ void handleShowHistory()
+- void handleResetFilters()
+- void resetFilters()
++ void checkExpiringCards()
+- void handleFindBestCard()
+- void showError(String,String)
+- void showInfo(String,String)
+~ ObservableList<Card> getCardList()
++ void addCard(Card)
++ void deleteCard(Long)
++ List<Card> applyFilters(String,String,Card.CardStatus)
++ List<CardHistory> getCardHistory(Long)
++ Optional<Card> findBestCardForCategory(String)
++ void updateCard(Card)
+# void showAlert(Alert.AlertType,String,String)
+}
+
+
+@enduml

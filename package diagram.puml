@@ -1,0 +1,60 @@
+@startuml
+class com.example.cashbacktracker.CashbackTrackerApplication {
+}
+
+class com.example.cashbacktracker.dao.SqliteCardDao {
+}
+
+
+class com.example.cashbacktracker.dao.XmlCardDao {
+}
+
+
+class com.example.cashbacktracker.dao.JsonCardDao {
+}
+
+
+class com.example.cashbacktracker.controller.CardHistoryController {
+}
+
+
+class com.example.cashbacktracker.controller.AddCardDialogController {
+}
+
+
+class com.example.cashbacktracker.dao.CardDaoFactory {
+}
+
+
+enum com.example.cashbacktracker.dao.StorageType {
+}
+
+class com.example.cashbacktracker.controller.MainController {
+}
+
+
+class com.example.cashbacktracker.model.Card {
+}
+
+
+enum com.example.cashbacktracker.model.CardStatus {
+}
+
+
+class com.example.cashbacktracker.model.CardHistory {
+}
+
+class com.example.cashbacktracker.service.CardService {
+}
+
+
+interface com.example.cashbacktracker.dao.CardDao {
+}
+
+
+
+javafx.application.Application <|-- com.example.cashbacktracker.CashbackTrackerApplication
+com.example.cashbacktracker.dao.CardDao <|.. com.example.cashbacktracker.dao.SqliteCardDao
+com.example.cashbacktracker.dao.CardDao <|.. com.example.cashbacktracker.dao.XmlCardDao
+com.example.cashbacktracker.dao.CardDao <|.. com.example.cashbacktracker.dao.JsonCardDao
+@enduml

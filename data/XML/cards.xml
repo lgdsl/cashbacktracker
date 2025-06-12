@@ -1,0 +1,32 @@
+<ArrayList>
+  <item>
+    <id>3</id>
+    <bankName>сбер</bankName>
+    <cardName>сбер</cardName>
+    <category>техника</category>
+    <cashback>7.0</cashback>
+    <categoryChangeDate>2025-06-20</categoryChangeDate>
+    <status>ACTIVE</status>
+    <active>true</active>
+  </item>
+  <item>
+    <id>5</id>
+    <bankName>тбанк</bankName>
+    <cardName>тбанк</cardName>
+    <category>топливо</category>
+    <cashback>6.0</cashback>
+    <categoryChangeDate>2025-07-04</categoryChangeDate>
+    <status>ACTIVE</status>
+    <active>true</active>
+  </item>
+  <item>
+    <id>2</id>
+    <bankName>сбер</bankName>
+    <cardName>сбер</cardName>
+    <category>лекарства</category>
+    <cashback>5.0</cashback>
+    <categoryChangeDate>2025-06-25</categoryChangeDate>
+    <status>ACTIVE</status>
+    <active>true</active>
+  </item>
+</ArrayList>

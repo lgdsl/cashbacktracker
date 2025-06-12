@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Text?>
+
+<BorderPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.example.cashbacktracker.controller.MainController">
+    <top>
+        <VBox spacing="10">
+            <padding>
+                <Insets top="20" right="20" bottom="20" left="20"/>
+            </padding>
+            <Text text="Трекер кэшбэка" style="-fx-font-size: 24px; -fx-font-weight: bold;"/>
+            <HBox spacing="10" alignment="CENTER_LEFT">
+                <Button fx:id="addButton" text="Добавить" onAction="#handleAddCard"/>
+                <Button fx:id="editButton" text="Редактировать" onAction="#handleEditCard"/>
+                <Button fx:id="deleteButton" text="Удалить" onAction="#handleDeleteCard"/>
+                <Button fx:id="historyButton" text="История изменений" onAction="#handleShowHistory"/>
+                <Region HBox.hgrow="ALWAYS"/>
+                <Label text="Хранилище данных"/>
+                <ComboBox fx:id="storageTypeCombo" prefWidth="150"/>
+            </HBox>
+            <HBox spacing="10" alignment="CENTER_LEFT">
+                <Label text="Категория для поиска"/>
+                <ComboBox fx:id="searchCategoryCombo" prefWidth="200"/>
+                <Button text="Подобрать карту с наибольшим процентом кэшбэка" onAction="#handleFindBestCard"/>
+            </HBox>
+            <VBox spacing="10" style="-fx-border-color: #cccccc; -fx-border-radius: 5; -fx-padding: 10;">
+                <Label text="Фильтры" style="-fx-font-size: 14px; -fx-font-weight: bold;"/>
+                <GridPane hgap="10" vgap="5">
+                    <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="150.0"/>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="150.0"/>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="150.0"/>
+                    </columnConstraints>
+                    <Label text="Банк:" GridPane.columnIndex="0"/>
+                    <ComboBox fx:id="bankFilter" prefWidth="150" GridPane.columnIndex="1"/>
+                    <Label text="Категория:" GridPane.columnIndex="2"/>
+                    <ComboBox fx:id="categoryFilter" prefWidth="150" GridPane.columnIndex="3"/>
+                    <Label text="Статус:" GridPane.columnIndex="4"/>
+                    <ComboBox fx:id="statusFilter" prefWidth="150" GridPane.columnIndex="5"/>
+                </GridPane>
+                <HBox alignment="CENTER_RIGHT">
+                    <Button text="Сбросить фильтры" onAction="#handleResetFilters"/>
+                </HBox>
+            </VBox>
+        </VBox>
+    </top>
+    <center>
+        <TableView fx:id="cardsTable" VBox.vgrow="ALWAYS">
+            <columns>
+                <TableColumn fx:id="bankNameColumn" text="Банк" prefWidth="150"/>
+                <TableColumn fx:id="cardNameColumn" text="Название карты" prefWidth="200"/>
+                <TableColumn fx:id="categoryColumn" text="Категория" prefWidth="150"/>
+                <TableColumn fx:id="cashbackColumn" text="Кэшбэк (%)" prefWidth="100"/>
+                <TableColumn fx:id="changeDateColumn" text="Дата смены категории" prefWidth="150"/>
+                <TableColumn fx:id="statusColumn" prefWidth="100.0" text="Статус" />
+            </columns>
+        </TableView>
+    </center>
+</BorderPane> 

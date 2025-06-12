@@ -1,0 +1,107 @@
+@startuml
+class dao.SqliteCardDao {
+- {static} String CREATE_TABLE_SQL
+- {static} String CREATE_HISTORY_TABLE_SQL
+- {static} String INSERT_SQL
+- {static} String UPDATE_SQL
+- {static} String DELETE_SQL
+- {static} String SELECT_ALL_SQL
+- {static} String SELECT_BY_ID_SQL
+- String dbUrl
+- void initializeDatabase()
++ void saveCard(Card)
++ void updateCard(Card)
++ void deleteCard(Long)
++ List<Card> getAllCards()
++ Optional<Card> getCardById(Long)
++ void saveHistory(CardHistory)
++ List<CardHistory> findHistoryByCardId(Long)
++ List<Card> findByCategory(String)
++ List<Card> findByExpiringCategory(LocalDate)
+- Card extractCardFromResultSet(ResultSet)
+- CardHistory mapHistoryFromResultSet(ResultSet)
+}
+
+
+class dao.XmlCardDao {
+- File file
+- File historyFile
+- XmlMapper mapper
+- AtomicLong nextId
+- List<Card> cards
+- List<CardHistory> history
+- void loadData()
+- void loadHistory()
+- void saveData()
+- void saveHistory()
++ void saveCard(Card)
++ void updateCard(Card)
++ void deleteCard(Long)
++ List<Card> getAllCards()
++ Optional<Card> getCardById(Long)
++ List<Card> findByCategory(String)
++ List<Card> findByExpiringCategory(LocalDate)
++ void saveHistory(CardHistory)
++ List<CardHistory> findHistoryByCardId(Long)
+}
+
+
+interface dao.CardDao {
+~ void saveCard(Card)
+~ void updateCard(Card)
+~ void deleteCard(Long)
+~ List<Card> getAllCards()
+~ Optional<Card> getCardById(Long)
+~ void saveHistory(CardHistory)
+~ List<CardHistory> findHistoryByCardId(Long)
+~ List<Card> findByCategory(String)
+~ List<Card> findByExpiringCategory(LocalDate)
+}
+
+class dao.JsonCardDao {
+- File file
+- File historyFile
+- ObjectMapper mapper
+- AtomicLong nextId
+- List<Card> cards
+- List<CardHistory> history
+- void loadData()
+- void loadHistory()
+- void saveData()
+- void saveHistory()
++ void saveCard(Card)
++ void updateCard(Card)
++ void deleteCard(Long)
++ List<Card> getAllCards()
++ Optional<Card> getCardById(Long)
++ List<Card> findByCategory(String)
++ List<Card> findByExpiringCategory(LocalDate)
++ void saveHistory(CardHistory)
++ List<CardHistory> findHistoryByCardId(Long)
+}
+
+
+class dao.CardDaoFactory {
+- {static} String DATA_DIR
+- {static} String JSON_DIR
+- {static} String XML_DIR
+- {static} String SQLITE_DIR
+- {static} String JSON_FILE_PATH
+- {static} String XML_FILE_PATH
+- {static} String SQLITE_FILE_PATH
++ {static} CardDao createDao(StorageType)
+}
+
+
+enum dao.StorageType {
++  SQLITE
++  JSON
++  XML
+}
+
+
+
+dao.CardDao <|.. dao.SqliteCardDao
+dao.CardDao <|.. dao.XmlCardDao
+dao.CardDao <|.. dao.JsonCardDao
+@enduml

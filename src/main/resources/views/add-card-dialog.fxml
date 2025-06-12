@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<DialogPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.example.cashbacktracker.controller.AddCardDialogController">
+    <content>
+        <VBox spacing="10">
+            <padding>
+                <Insets top="15" right="15" bottom="15" left="15"/>
+            </padding>
+            <Label text="Добавить карту" style="-fx-font-size: 16px; -fx-font-weight: bold;"/>
+            
+            <GridPane hgap="10" vgap="5">
+                <columnConstraints>
+                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="200.0"/>
+                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="200.0"/>
+                </columnConstraints>
+                
+                <Label text="Банк:" GridPane.columnIndex="0"/>
+                <TextField fx:id="bankNameField" promptText="Банк" GridPane.columnIndex="1"/>
+                <Label fx:id="bankNameError" textFill="RED" GridPane.columnIndex="2"/>
+                
+                <Label text="Название карты:" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+                <TextField fx:id="cardNameField" promptText="Название карты" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+                <Label fx:id="cardNameError" textFill="RED" GridPane.columnIndex="2" GridPane.rowIndex="1"/>
+                
+                <Label text="Категория:" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+                <TextField fx:id="categoryField" promptText="Категория" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+                <Label fx:id="categoryError" textFill="RED" GridPane.columnIndex="2" GridPane.rowIndex="2"/>
+                
+                <Label text="Кэшбэк (%):" GridPane.columnIndex="0" GridPane.rowIndex="3"/>
+                <TextField fx:id="cashbackField" promptText="Кэшбэк (%)" GridPane.columnIndex="1" GridPane.rowIndex="3"/>
+                <Label fx:id="cashbackError" textFill="RED" GridPane.columnIndex="2" GridPane.rowIndex="3"/>
+                
+                <Label text="Дата смены:" GridPane.columnIndex="0" GridPane.rowIndex="4"/>
+                <DatePicker fx:id="changeDatePicker" promptText="Дата смены" GridPane.columnIndex="1" GridPane.rowIndex="4"/>
+                <Label fx:id="dateError" textFill="RED" GridPane.columnIndex="2" GridPane.rowIndex="4"/>
+                
+                <CheckBox fx:id="activeCheckBox" text="Активна категория" selected="true" 
+                         GridPane.columnIndex="1" GridPane.rowIndex="5"/>
+            </GridPane>
+        </VBox>
+    </content>
+    <buttonTypes>
+        <ButtonType fx:constant="OK" />
+        <ButtonType fx:constant="CANCEL"/>
+    </buttonTypes>
+</DialogPane> 
